@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartCart</title>
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="icon" type="image/png" href="assets/SmartCart-152.png">
+<link rel="manifest" href="manifest.json">
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <div id="nav-menu">
+    <div id="nav-buttons-container">
+      <button id="info-btn" class="nav-button" onclick="showInfo()" onmouseover="displayInfoMessage()" onmouseout="hideInfoMessage()">
+        <img src="assets/info.png" alt="Informacije">
+      </button>
+      <button id="profile-btn" class="nav-button" onclick="goToProfile()">
+        <img src="assets/user-profile.png" alt="Profil">
+      </button>
+      <button id="logout-btn" class="nav-button" onclick="logout()">
+        <img src="assets/logout.png" alt="Odjava">
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div id="header-container">
+      <div class="title">
+        <img src="assets/SmartCart.png" alt="SmartCart" class="SmartCart-image">
+        <h1 style="color: #719c0e; font-family: Verdana, Geneva, Tahoma, sans-serif;">SmartCart</h1>
+      </div>
+      <div style="position: relative;">
+        <input type="text" id="search" placeholder="Iskanje..." style="margin-bottom: 0;" class="input-style">
+        <img src="assets/search.png" alt="Search" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; cursor: pointer; width:12px;" onclick="search()">
+      </div>    
+    </div>
+    <form id="shopping-list-form">
+      <label>Nov nakupovalni seznam:</label><br>
+      <input type="text" id="list-name" placeholder="Ime nakupovalnega seznama" required class="input-style" style="width: 250px; margin-top: 10px;">
+      <button type="submit" id="submit-list-btn" class="button-style" style="margin-bottom: 20px;">Dodaj</button>
+    </form>
+    <div id="shopping-lists-container">
+      <!-- Shopping lists will be displayed here as cards -->
+    </div>
+  </div>
+  <!-- Modal information window -->
+  <div id="info-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeInfo()">&times;</span>
+      <h2 style="color: #719c0e;">POMEMBNE INFORMACIJE</h2>
+      <h3>Bližnjice na tipkovnici</h3>
+      <ul>
+        <li style="font-size: 14px;"><b style="color: #719c0e;">Alt + l</b> - Odjava iz aplikacije</li>
+        <li style="font-size: 14px;"><b style="color: #719c0e;">Alt + s</b> - Osredotočanje na iskalno vnosno polje</li>
+        <li style="font-size: 14px;"><b style="color: #719c0e;">Alt + g</b> - Spreminjanje izgleda strani</li>
+      </ul>
+      <h3>Glasovno upravljanje</h3>
+      <p style="margin-top: 10px; font-size: 14px;">Za dostop do glasovnega upravljanja pritisnite Alt + v.</p>
+      <ul>
+        <li style="font-size: 14px;"><b style="color: #719c0e;">'Add shopping list</b> + <b style="color: #719c0e;">želeno ime'</b> - Dodajanje novega nakupovalnega seznama</li>
+        <li style="font-size: 14px;"><b style="color: #719c0e;">'Log-out'</b> - Odjava iz aplikacije</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Modal window for adding products -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeProductModal()">&times;</span>
+      <h2 style="color: #719c0e;">DODAJ IZDELEK</h2>
+      <form id="product-form">
+        <div style="display: flex; flex-direction: row;">
+          <div style="flex: 1;">
+            <label for="product-name" style="display: block; margin-bottom: 5px;">Ime izdelka:</label>
+            <input type="text" id="product-name" placeholder="Ime izdelka" required class="input-style">
+          </div>
+          <div style="flex: 1; margin-left: 5px;">
+            <label for="product-price" style="display: block; margin-bottom: 5px;">Cena:</label>
+            <input type="number" id="product-price" placeholder="Cena" required class="input-style">
+          </div>
+          <div style="flex: 1;"></div>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 10px;">
+          <div style="flex: 1;">
+            <label for="product-category" style="display: block; margin-bottom: 5px;">Kategorija:</label>
+            <input type="text" id="product-category" placeholder="Kategorija" required class="input-style">
+          </div>
+          <div style="flex: 1; margin-left: 5px;">
+            <label for="product-brand" style="display: block; margin-bottom: 5px;">Znamka:</label>
+            <input type="text" id="product-brand" placeholder="Znamka" required class="input-style">
+          </div>
+          <div style="flex: 1; margin-left: 5px;">
+            <button type="submit" class="button-style" style="margin-top: 10px;">Dodaj izdelek</button>
+          </div>
+        </div>
+      </form>
+      <div id="existing-products-container">
+        <!-- Existing products of the user will be displayed here -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal window for entering email address -->
+  <div id="email-modal" class="modal">
+    <div class="modal-content" style="max-width: 400px;">
+      <span class="close" onclick="closeEmailModal()">&times;</span>
+      <h2 style="color: #719c0e;">Pošlji seznam po e-pošti</h2>
+      <form id="email-form">
+        <input type="email" id="recipient-email" placeholder="Vnesite e-poštni naslov prejemnika" required class="input-style" style="margin-bottom: 10px; width: 250px;">
+        <button type="submit" class="button-style" style="margin-left: 10px;">
+          Pošlji
+          <img src="assets/email.png" alt="Pošlji" style="width: 15px;" class="img-button">
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- Modal product edit window -->
+  <div id="edit-product-modal" class="modal">
+    <div class="modal-content" style="max-width: 560px;">
+      <span class="close" onclick="closeEditProductModal()">&times;</span>
+      <h2 style="color: #719c0e;">UREDI IZDELEK</h2>
+      <form id="edit-product-form">
+        <div style="display: flex; flex-direction: row;">
+          <div style="flex: 0.8;">
+            <label for="edit-product-name" style="display: block; margin-bottom: 5px;">Ime izdelka:</label>
+            <input type="text" id="edit-product-name" placeholder="Ime izdelka" required class="input-style">
+          </div>
+          <div style="flex: 0.8; margin-left: 5px;">
+            <label for="edit-product-price" style="display: block; margin-bottom: 5px;">Cena:</label>
+            <input type="number" id="edit-product-price" placeholder="Cena" required class="input-style">
+          </div>
+          <div style="flex: 0.6;"></div>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: flex-end; margin-top: 10px; margin-bottom: 10px;">
+          <div style="flex: 0.8;">
+            <label for="edit-product-category" style="display: block; margin-bottom: 5px;">Kategorija:</label>
+            <input type="text" id="edit-product-category" placeholder="Kategorija" required class="input-style">
+          </div>
+          <div style="flex: 0.8; margin-left: 5px;">
+            <label for="edit-product-brand" style="display: block; margin-bottom: 5px;">Znamka:</label>
+            <input type="text" id="edit-product-brand" placeholder="Znamka" required class="input-style">
+          </div>
+          <div style="flex: 0.6; margin-left: 5px;">
+            <button type="submit" class="button-style" style="margin-top: 10px;">Posodobi</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Modal window to share a list -->
+  <div id="share-list-modal" class="modal">
+    <div class="modal-content" style="max-width: 500px;">
+      <span class="close" onclick="closeShareModal()">&times;</span>
+      <h2 style="color: #719c0e;">Deli nakupovalni seznam</h2>
+      <p>Z deljenjem nakupovalnega seznama bodo uporabniki pridobili pravice za urejanje vašega 
+        nakupovalnega seznama (dodajanje in brisanje izdelkov).</p>
+      <form id="share-list-form" onsubmit="shareList(event)">
+        <label for="share-email">E-poštni naslov:</label>
+        <input type="email" id="share-email" placeholder="Vnesite e-poštni naslov uporabnika" class="input-style" style="width: 220px;">
+        <button type="submit" class="button-style">
+          Deli
+          <img src="assets/share.png" alt="Deli" style="width: 12px;" class="img-button">
+        </button>
+      </form>
+    </div>
+  </div>  
+  <!-- Modal window to confirm deletion -->
+  <div id="confirmation-modal" class="modal">
+    <div class="modal-content" style="max-width: 400px;">
+      <p><b>Ali ste prepričani, da želite izbrisati izdelek?</b></p>
+      <p>Z brisanjem izdelka, se bo ta odstranil tudi iz vseh nakupovalnih seznamov!</p>
+      <button id="confirm-delete-btn" class="button-style">Potrdi</button>
+      <button id="cancel-delete-btn" class="button-style">Prekliči</button>
+    </div>
+  </div>
+  <script src="index.js"></script>
+  <script src="theme.js"></script>
+  <footer style="margin-top: 25px;">
+    <p>© 2024 SmartCart. Vse pravice pridržane.</p>
+    <img src="assets/SmartCart.png" alt="SmartCart Logo" style="height: 40px; width: auto;">
+  </footer>
+</body>
+</html>

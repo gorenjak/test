@@ -1,0 +1,260 @@
+.button-style {
+  background-color: #719c0e; 
+  font-weight: 600;
+  color: white;
+  padding: 7px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-style:hover {
+  background-color: #5a7c0b;
+}
+
+.input-style{
+  padding: 5px;
+}
+  
+#shopping-lists-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+  
+.shopping-list-card {
+  flex: 0 1 calc(50% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  padding-top: 5px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .shopping-list-card {
+    flex: 0 1 calc(100% - 20px);
+  }
+}
+
+.shopping-list-card h3 {
+  color: #719c0e;
+  margin-bottom: 10px;
+}
+
+.shopping-list-card ul {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.shopping-list-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 5px;
+}
+  
+.item-details {
+  flex: 1;
+}
+  
+.img-button {
+  height: auto; 
+  margin-left: 2px
+}
+  
+.delete-btn {
+  background-image: url('assets/X.png'); 
+  background-size: cover;
+  height: 15px; 
+  width: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+  
+.edit-button, .delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 5px;
+}
+  
+.edit-button{
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+  
+.edit-button img, .delete-button img {
+  width: auto;
+  height: 15px;
+}
+  
+.existing-product-item {
+  margin-bottom: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-button {
+  background-color: transparent;
+  color: #719c0e;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color 0.3s, text-decoration 0.3s;
+  text-decoration: none;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+  .add-button:hover {
+  text-decoration: underline;
+}
+
+.existing-product-item {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+#existing-products-container{
+  margin-top: 20px;
+}
+
+body, html {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+  #nav-menu {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+#header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: #719c0e;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title img {
+  margin-right: 10px;
+  width: 60px;
+}
+
+#nav-menu {
+  width: 100%;
+  background-color: #d3e3af;
+  overflow: hidden;
+  padding: 8px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+#nav-buttons-container {
+  float: right;
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button img {
+  width: 25px;
+  height: auto;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d3e3af;
+  padding: 10px 20px;
+}
+
+footer p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #3a4f06;
+}
+
+.edit-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 18px;
+  height: 18px; 
+  background-image: url('assets/edit.png'); 
+  background-size: cover; 
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prijava</title>
+<link rel="stylesheet" type="text/css" href="style-log-reg.css">
+<link rel="icon" type="image/png" href="assets/SmartCart-152.png">
+<link rel="manifest" href="manifest.json">
+<style>
+  body {
+    height: 100vh;
+    opacity: 100%;
+  }
+  .cont-log-reg  {
+    max-width: 400px;
+  }
+  .modal-content {
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+  }
+</style>
+</head>
+<body class="body-log-reg">
+  <div class="cont-log-reg ">
+    <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #719c0e;">PRIJAVA</h1>
+    <form id="login-form">
+      <label for="username" class="input-label">Uporabniško ime:</label>
+      <input type="text" id="username" placeholder="Uporabniško ime" required class="input-style">
+      <label for="password" class="input-label">Geslo:</label>
+      <input type="password" id="password" placeholder="Geslo" required class="input-style">
+      <div>
+        <button type="submit" class="button-style">Prijava</button>
+      </div>
+      <div id="error-message" style="color: red; display: none; margin-top: 15px;">Napačni podatki!</div>
+    </form>
+    <div class="reg-log-link">
+      <a href="register.html">Še nimate računa? Registrirajte se tukaj.</a>
+      <br>
+      <a href="#" id="forgot-password-link">Pozabljeno geslo?</a>
+    </div>
+  </div>
+  <!-- Password Reset Modal -->
+  <div id="reset-password-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="color: #719c0e; font-family: Verdana, Geneva, Tahoma, sans-serif;">PONASTAVITEV GESLA</h2>
+      <form id="reset-password-form">
+        <label for="reset-email" class="input-label">E-pošta:</label>
+        <input type="email" id="reset-email" placeholder="E-pošta" required class="input-style">
+        <label for="reset-new-password" class="input-label">Novo geslo:</label>
+        <input type="password" id="reset-new-password" placeholder="Novo geslo" required class="input-style">
+        <label for="reset-confirm-password" class="input-label">Potrdi novo geslo:</label>
+        <input type="password" id="reset-confirm-password" placeholder="Potrdi novo geslo" required class="input-style">
+        <div>
+          <button type="submit" class="button-style">Ponastavi geslo</button>
+        </div>
+        <div id="reset-error-message" class="error-message-center"></div>
+      </form>
+    </div>
+  </div>
+  <!-- Modal for successful password update -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content" style="width: 350px;">
+      <span class="close success-close">&times;</span>
+      <h2 style="color: #719c0e;">Geslo je uspešno posodobljeno!</h2>
+      <p>Zdaj se lahko prijavite z novim geslom.</p>
+      <button id="success-button" class="button-style">V redu</button>
+    </div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registracija</title>
+<link rel="stylesheet" type="text/css" href="style-log-reg.css">
+<link rel="icon" type="image/png" href="assets/SmartCart-152.png">
+<link rel="manifest" href="manifest.json">
+<style>
+  body {
+    min-height: 100vh;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+  .cont-log-reg  {
+    max-width: 600px;
+    margin: 20px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .form-column {
+    flex: 1;
+  }
+  .modal-content {
+    margin: 7% auto;
+  }
+  .modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #719c0e;
+    color: white;
+    cursor: pointer;
+  }
+  .modal-button:hover {
+    background-color: #5a7c0b;
+  }
+</style>
+</head>
+<body class="body-log-reg">
+  <div class="cont-log-reg ">
+    <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #719c0e;">REGISTRACIJA</h1>
+    <form id="register-form">
+      <div class="form-row">
+        <div class="form-column">
+          <label for="firstname" class="input-label">Ime:</label>
+          <input type="text" id="firstname" placeholder="Ime" required class="input-style">
+          <label for="lastname" class="input-label">Priimek:</label>
+          <input type="text" id="lastname" placeholder="Priimek" required class="input-style">
+          <label for="email" class="input-label">E-pošta:</label>
+          <input type="email" id="email" placeholder="E-pošta" required class="input-style">
+        </div>
+        <div class="form-column">
+          <label for="username" class="input-label">Uporabniško ime:</label>
+          <input type="text" id="username" placeholder="Uporabniško ime" required class="input-style">
+          <label for="password" class="input-label">Geslo:</label>
+          <input type="password" id="password" placeholder="Geslo" required class="input-style">
+          <label for="confirm-password" class="input-label">Potrdite geslo:</label>
+          <input type="password" id="confirm-password" placeholder="Potrdite geslo" required class="input-style">
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="button-style">Registracija</button>
+      </div>
+    </form>
+    <div class="reg-log-link">
+      <a href="login.html">Že imate račun? Prijavite se tukaj.</a>
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modal-message"></p>
+        <button class="modal-button" id="modal-ok-button">V redu</button>
+      </div>
+    </div>
+    <script src="register.js"></script>
+  </div>
+</body>
+</html>

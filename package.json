@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "googleapis": "^137.1.0",
+    "http-server": "^14.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.5",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "socket.io": "^4.7.5",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "html-loader": "^5.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "check": "echo $PATH && ls -l ./node_modules/.bin",
+    "start": "node server.js"
+  }
+}

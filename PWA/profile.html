@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uporabniški profil</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="profile-styles.css">
+    <link rel="icon" type="image/png" href="assets/SmartCart-152.png">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="main-content">
+        <div id="nav-menu">
+            <button class="nav-button" onclick="goBack()">
+                <img src="assets/back.png" alt="Nazaj">
+            </button>
+            <div id="nav-buttons-container">
+                <button id="logout-btn" class="nav-button" onclick="logout()">
+                    <img src="assets/logout.png" alt="Odjava">
+                </button>
+            </div>
+        </div>
+        <div style="margin-top: 25px;">
+            <div class="container">
+                <img src="assets/SmartCart.png" alt="SmartCart" style="width: 20%;">
+                <div id="profileData">
+                    <!-- User profile data will be displayed here -->
+                </div>
+                <button class="button-style" onclick="editProfile()">Uredi podatke</button>
+                <button class="button-style" onclick="confirmDelete()">Izbriši račun</button>
+                <button class="button-style" onclick="changePassword()">Spremeni geslo</button>
+            </div>
+        </div>
+        <!-- Modal for editing profile -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 style="color:#719c0e">UREDI PODATKE</h2>
+                <form id="editForm" onsubmit="updateProfile(event)">
+                    <label for="editEmail" class="input-label">E-pošta:</label>
+                    <input type="email" id="editEmail" class="input-style" required>
+                    <label for="editFirstname" class="input-label">Ime:</label>
+                    <input type="text" id="editFirstname" class="input-style" required>
+                    <label for="editLastname" class="input-label">Priimek:</label>
+                    <input type="text" id="editLastname" class="input-style" required>
+                    <button type="submit" class="button-style">Shrani spremembe</button>
+                </form>
+            </div>
+        </div>
+        <!-- Modal for confirming account deletion -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 style="color: #719c0e;">IZBRIŠI RAČUN</h2>
+                <p>Ali ste prepričani, da želite izbrisati svoj uporabniški račun?</p>
+                <button onclick="deleteAccount()" class="button-style">Da, Izbriši</button>
+                <button onclick="closeModal()" class="button-style">Prekliči</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for changing password -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color:#719c0e">SPREMEMBA GESLA</h2>
+            <form id="changePasswordForm" onsubmit="submitChangePassword(event)">
+                <label for="oldPassword" class="input-label">Staro geslo:</label>
+                <input type="password" id="oldPassword" class="input-style" required>
+                <label for="newPassword" class="input-label">Novo geslo:</label>
+                <input type="password" id="newPassword" class="input-style" required>
+                <label for="confirmNewPassword" class="input-label">Potrdi novo geslo:</label>
+                <input type="password" id="confirmNewPassword" class="input-style" required>
+                <button type="submit" class="button-style">Spremeni geslo</button>
+            </form>
+        </div>
+    </div>
+    <script src="theme.js"></script>
+    <script src="profile.js"></script>
+    <footer  style="margin-top: 25px;">
+        <p>© 2024 SmartCart. Vse pravice pridržane.</p>
+    <img src="assets/SmartCart.png" alt="SmartCart Logo" style="height: 40px; width: auto;">
+  </footer>
+</body>
+</html>
