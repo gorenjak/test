@@ -1,4 +1,15 @@
 {
+  "name": "smartcart",
+  "version": "1.0.0",
+  "description": "SmartCart Project",
+  "main": "server.js",
+  "scripts": {
+    "start-server": "node api/server.js",
+    "start-push": "node api/push-notification.js",
+    "start-shopping-list": "node api/shopping-list.js",
+    "start-local-server": "http-server ./PWA -p 8080 -o login.html", 
+    "start": "npm-run-all --parallel start-server start-push start-shopping-list start-local-server"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -6,22 +17,26 @@
     "express": "^4.21.1",
     "express-validator": "^7.2.0",
     "googleapis": "^144.0.0",
-    "http-server": "^14.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
-    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.15",
     "socket.io": "^4.8.0",
     "web-push": "^3.6.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
     "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "npm-run-all": "^4.1.5",
+    "style-loader": "^3.3.1",
     "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.10.0",
+    "http-server": "^14.1.1"
   },
-  "scripts": {
-    "build": "webpack --mode production",
-    "check": "echo $PATH && ls -l ./node_modules/.bin",
-    "start": "node server.js"
-  }
+  "license": "MIT"
 }
