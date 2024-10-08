@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: smartcart-backend
+    env: node
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+    source: ./REST  # Povezava do mape z backend kodo
+    instances: 1
+    routes:
+      - "/api/*"  # Nastavi poti za API klice
+    regions:
+      - "us-east"
+  
+  - type: static_site
+    name: smartcart-frontend
+    env: static
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start-local-server"
+    source: ./PWA  # Povezava do mape s frontendom
+    routes:
+      - "/login.html"
+    regions:
+      - "us-east"
