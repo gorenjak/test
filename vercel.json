@@ -2,16 +2,26 @@
     "version": 2,
     "builds": [
       {
-        "src": "PWA/login.html",
+        "src": "PWA/**/*",
         "use": "@vercel/static"
       },
       {
-        "src": "REST/**/*.js",
+        "src": "REST/server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "REST/push-notification.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "REST/shopping-list.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
-      { "src": "/api/(.*)", "dest": "REST/$1.js" },
+      { "src": "/api/server", "dest": "REST/server.js" },
+      { "src": "/api/push-notification", "dest": "REST/push-notification.js" },
+      { "src": "/api/shopping-list", "dest": "REST/shopping-list.js" },
       { "src": "/(.*)", "dest": "PWA/$1" }
     ]
   }  
