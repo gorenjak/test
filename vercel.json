@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "PWA/login.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "REST/**/*.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "REST/$1.js" },
+      { "src": "/(.*)", "dest": "PWA/$1" }
+    ]
+  }  

@@ -4,10 +4,10 @@
   "description": "SmartCart Project",
   "main": "server.js",
   "scripts": {
-    "start-server": "node src/server.js",
-    "start-push": "node src/push-notification.js",
-    "start-shopping-list": "node src/shopping-list.js",
-    "start-local-server": "http-server src/PWA -p 8080 -o login.html", 
+    "start-server": "node REST/server.js",
+    "start-push": "node REST/push-notification.js",
+    "start-shopping-list": "node REST/shopping-list.js",
+    "start-local-server": "http-server ./PWA -p 8080 -o login.html", 
     "start": "npm-run-all --parallel start-server start-push start-shopping-list start-local-server"
   },
   "dependencies": {
