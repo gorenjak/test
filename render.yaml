@@ -1,5 +1,6 @@
 services:
-  - type: web
+  # Backend (web service)
+  - type: web_service
     name: smartcart-backend
     env: node
     plan: free
@@ -8,10 +9,11 @@ services:
     source: ./REST  # Povezava do mape z backend kodo
     instances: 1
     routes:
-      - "/api/*"  # Nastavi poti za API klice
+      - "/api/*"  # API poti
     regions:
       - "us-east"
-  
+
+  # Frontend (static site)
   - type: static_site
     name: smartcart-frontend
     env: static
