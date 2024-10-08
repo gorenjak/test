@@ -1,6 +1,6 @@
 services:
   # Backend (web service)
-  - type: web_service
+  - type: web
     name: smartcart-backend
     env: node
     plan: free
