@@ -6,13 +6,14 @@ services:
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm start"
-    source: ./REST  # Povezava do mape z backend kodo
-    instances: 1
+    # Corrected field for referencing source directory
+    build:
+      context: ./REST  # Link to backend directory
     routes:
-      - "/api/*"  # API poti
+      - path: "/api/*"  # Correct format for route path (depending on the platform)
     regions:
-      - "us-east"
-
+      - "us-east"  # Ensure your platform supports region selection
+  
   # Frontend (web service for static files)
   - type: web
     name: smartcart-frontend
@@ -20,9 +21,10 @@ services:
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm run start-local-server"
-    source: ./PWA  # Povezava do mape s frontendom
-    instances: 1
+    # Corrected field for referencing source directory
+    build:
+      context: ./PWA  # Link to frontend directory
     routes:
-      - "/login.html"
+      - path: "/login.html"
     regions:
-      - "us-east"
+      - "us-east"  # Ensure your platform supports region selection
