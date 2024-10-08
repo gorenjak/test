@@ -13,10 +13,10 @@ services:
     regions:
       - "us-east"
 
-  # Frontend (static site)
-  - type: static_site
+  # Frontend (web service for static files)
+  - type: web
     name: smartcart-frontend
-    env: static
+    env: node
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm run start-local-server"
