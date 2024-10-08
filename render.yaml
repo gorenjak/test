@@ -13,8 +13,8 @@ services:
     regions:
       - "us-east"
 
-  # Frontend (web service, za statične datoteke)
-  - type: web
+  # Frontend (static site)
+  - type: static_site
     name: smartcart-frontend
     env: static
     plan: free
