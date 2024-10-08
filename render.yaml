@@ -6,14 +6,12 @@ services:
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm start"
-    # Corrected field for referencing source directory
-    build:
-      context: ./REST  # Link to backend directory
-    routes:
-      - path: "/api/*"  # Correct format for route path (depending on the platform)
-    regions:
-      - "us-east"  # Ensure your platform supports region selection
-  
+    # Define the backend directory for Render
+    autoDeploy: true  # Automatically deploy on new commits
+    envVars:  # Optional: define environment variables if needed
+      - key: NODE_ENV
+        value: production
+
   # Frontend (web service for static files)
   - type: web
     name: smartcart-frontend
@@ -21,10 +19,8 @@ services:
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm run start-local-server"
-    # Corrected field for referencing source directory
-    build:
-      context: ./PWA  # Link to frontend directory
-    routes:
-      - path: "/login.html"
-    regions:
-      - "us-east"  # Ensure your platform supports region selection
+    # Define the frontend directory for Render
+    autoDeploy: true  # Automatically deploy on new commits
+    envVars:  # Optional: define environment variables if needed
+      - key: NODE_ENV
+        value: production
