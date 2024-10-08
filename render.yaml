@@ -13,14 +13,15 @@ services:
     regions:
       - "us-east"
 
-  # Frontend (static site)
-  - type: static_site
+  # Frontend (web service, za statične datoteke)
+  - type: web
     name: smartcart-frontend
     env: static
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm run start-local-server"
     source: ./PWA  # Povezava do mape s frontendom
+    instances: 1
     routes:
       - "/login.html"
     regions:
