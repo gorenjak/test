@@ -5,8 +5,6 @@ const resetPasswordForm = document.getElementById('reset-password-form');
 const successModal = document.getElementById('success-modal');
 const successClose = document.querySelector('.success-close');
 const successButton = document.getElementById('success-button');
-const serverApiUrl = "https://test-5fdn.onrender.com";
-const pushNotificationApiUrl = "https://test-5fdn.onrender.com:4000";
 
 // Show the password reset modal
 forgotPasswordLink.onclick = function() {
@@ -41,7 +39,7 @@ window.onclick = function(event) {
 // Fetch the public key for push notifications from the server
 async function getPublicKey() {
   try {
-    const response = await fetch('${pushNotificationApiUrl}/api/publicKey');
+    const response = await fetch('http://localhost:4000/api/publicKey');
     const data = await response.json();
     return data.publicKey;
   } catch (error) {
@@ -96,7 +94,7 @@ async function registerPushNotification(publicKey) {
     });
     
     // Send the push notification subscription to the server
-    await fetch('${pushNotificationApiUrl}/api/push/subscribe', {
+    await fetch('http://localhost:4000/api/push/subscribe', {
       method: 'POST',
       body: JSON.stringify({ subscription }),
       headers: {
@@ -117,7 +115,7 @@ loginForm.addEventListener('submit', async function(event) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const response = await fetch('${serverApiUrl}/api/login', {
+  const response = await fetch('http://localhost:3000/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -167,7 +165,7 @@ resetPasswordForm.addEventListener('submit', async function(event) {
     return;
   }
 
-  const response = await fetch('${serverApiUrl}/api/reset-password', {
+  const response = await fetch('http://localhost:3000/api/reset-password', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
