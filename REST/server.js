@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const app = express();
-const PORT = process.env.PORT || 10000; // Ali dinamični port ali 10000 kot privzeti
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());

@@ -6,7 +6,7 @@ const webpush = require('web-push');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = process.env.PORT || 10000; // Ali dinamični port ali 10000 kot privzeti
+const PORT = process.env.PUSH_NOTIFICATION_PORT || 4000;
 
 app.use(cors());
 app.use(bodyParser.json());
