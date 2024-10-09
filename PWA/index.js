@@ -82,7 +82,7 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-const apiUrl = 'http://localhost:5000/api/shopping-lists';
+const apiUrl = 'https://test-5fdn.onrender.com:5000/api/shopping-lists';
 const accessToken = localStorage.getItem('accessToken');
 const refreshToken = localStorage.getItem('refreshToken');
 const userId = localStorage.getItem('userId');
@@ -139,7 +139,7 @@ async function shareList(event) {
     const userId = userData._id;
 
     // Update the shopping list for sharing
-    const shareResponse = await fetch(`http://localhost:5000/api/shopping-lists/${listId}/share`, {
+    const shareResponse = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${listId}/share`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -176,7 +176,7 @@ async function displayShoppingLists() {
   shoppingListsContainer.innerHTML = '';
 
   try {
-    const response = await fetch('http://localhost:5000/api/shopping-lists', {
+    const response = await fetch('https://test-5fdn.onrender.com:5000/api/shopping-lists', {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
@@ -205,7 +205,7 @@ async function displayShoppingLists() {
         <p style="font-size: 12px; color: #b56f07">Ustvarjeno: ${formattedDate} ob ${formattedTime}</p>
       `;
 
-      const productsResponse = await fetch(`http://localhost:5000/api/shopping-lists/${list._id}`, {
+      const productsResponse = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${list._id}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
@@ -304,7 +304,7 @@ async function saveListName(listId) {
   const newName = document.getElementById(`edit-name-input-${listId}`).value;
 
   try {
-    const response = await fetch(`http://localhost:5000/api/shopping-lists/${listId}`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${listId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -333,7 +333,7 @@ async function saveListName(listId) {
 
 async function deleteProduct(listId, productId) {
   try {
-    const response = await fetch(`http://localhost:5000/api/shopping-lists/${listId}/products/${productId}`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${listId}/products/${productId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${accessToken}`
@@ -415,7 +415,7 @@ async function addShoppingList(event) {
 
 async function deleteList(id) {
   try {
-    const response = await fetch(`http://localhost:5000/api/shopping-lists/${id}`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${accessToken}`
@@ -455,7 +455,7 @@ async function addProduct(event) {
   };
 
   try {
-    const response = await fetch(`http://localhost:5000/api/shopping-lists/${listId}/products`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${listId}/products`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -490,7 +490,7 @@ async function addProduct(event) {
 
 async function addProductToList(product, listId) {
   try {
-    const response = await fetch(`http://localhost:5000/api/shopping-lists/${listId}/products/${product._id}`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/shopping-lists/${listId}/products/${product._id}`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${accessToken}`,
@@ -564,7 +564,7 @@ document.getElementById('edit-product-form').addEventListener('submit', async fu
   };
 
   try {
-    const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/products/${productId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -592,7 +592,7 @@ document.getElementById('edit-product-form').addEventListener('submit', async fu
 
 async function displayExistingProducts(userId, listId) {
   try {
-    const response = await fetch(`http://localhost:5000/api/users/${userId}/products`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/users/${userId}/products`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
@@ -668,7 +668,7 @@ async function deleteProductFromList(userId, listId, productId) {
   deleteProduct(listId, productId);
 
   try {
-    const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+    const response = await fetch(`https://test-5fdn.onrender.com:5000/api/products/${productId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${accessToken}`
@@ -734,7 +734,7 @@ async function sendShoppingList(listId) {
 
       try {
         // Send shopping list data via POST request with JWT
-        const response = await fetch(`http://localhost:5000/api/send-shopping-list/${listId}`, {
+        const response = await fetch(`https://test-5fdn.onrender.com:5000/api/send-shopping-list/${listId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
