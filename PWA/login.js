@@ -41,7 +41,7 @@ window.onclick = function(event) {
 // Fetch the public key for push notifications from the server
 async function getPublicKey() {
   try {
-    const response = await fetch('${pushNotificationApiUrl}/api/publicKey');
+    const response = await fetch('https://test-5fdn.onrender.com/push/api/publicKey');
     const data = await response.json();
     return data.publicKey;
   } catch (error) {
