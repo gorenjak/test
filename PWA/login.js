@@ -5,7 +5,7 @@ const resetPasswordForm = document.getElementById('reset-password-form');
 const successModal = document.getElementById('success-modal');
 const successClose = document.querySelector('.success-close');
 const successButton = document.getElementById('success-button');
-const serverApiUrl = process.env.SERVER_API_URL;
+const serverApiUrl = "https://test-5fdn.onrender.com";
 const pushNotificationApiUrl = process.env.PUSH_NOTIFICATION_API_URL;
 
 // Show the password reset modal
