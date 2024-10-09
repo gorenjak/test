@@ -10,6 +10,14 @@ const bcrypt = require('bcrypt');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Nastavitev statičnih datotek
+app.use(express.static(path.join(__dirname, '../PWA'))); // pot do mape PWA
+
+// Usmerjanje na login.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../PWA/login.html')); // pot do login.html
+});
+
 app.use(cors());
 app.use(bodyParser.json());
 
