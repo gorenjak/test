@@ -5,7 +5,7 @@ const resetPasswordForm = document.getElementById('reset-password-form');
 const successModal = document.getElementById('success-modal');
 const successClose = document.querySelector('.success-close');
 const successButton = document.getElementById('success-button');
-const serverApiUrl = "https://test-5fdn.onrender.com";
+const serverApiUrl = "https://test-5fdn.onrender.com:3000";
 const pushNotificationApiUrl = "https://test-5fdn.onrender.com:4000";
 
 // Show the password reset modal
@@ -117,7 +117,7 @@ loginForm.addEventListener('submit', async function(event) {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const response = await fetch('${serverApiUrl}/api/login', {
+  const response = await fetch('https://test-5fdn.onrender.com:3000/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
