@@ -11,7 +11,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 const app = express();
-const socketServer = http.createServer(app);
+const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: "*",
@@ -22,7 +22,6 @@ const io = socketIo(server, {
 });
 
 const PORT = process.env.SHOPPING_LIST_PORT || 5000;
-const SOCKET_PORT = process.env.SOCKET_PORT || 9000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -515,10 +514,7 @@ app.post('/api/shopping-lists/:id/share', authenticateToken, async (req, res) =>
   }
 });
 
-socketServer.listen(SOCKET_PORT, () => {
-    console.log(`Socket.io server is running on port ${SOCKET_PORT}`);
-});
-
+// Start server
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
