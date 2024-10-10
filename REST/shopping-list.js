@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*",
+    origin: "https://test-shopping.onrender.com",
     methods: ["GET", "POST", "DELETE"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
