@@ -518,6 +518,6 @@ socketServer.listen(SOCKET_PORT, () => {
   console.log(`Socket.io server is running on port ${SOCKET_PORT}`);
 });
 
-server.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
