@@ -41,7 +41,7 @@ window.onclick = function(event) {
 // Fetch the public key for push notifications from the server
 async function getPublicKey() {
   try {
-    const response = await fetch('https://test-5fdn.onrender.com:4000/api/publicKey');
+    const response = await fetch('https://test-push-bkct.onrender.com/api/publicKey');
     const data = await response.json();
     return data.publicKey;
   } catch (error) {
@@ -96,7 +96,7 @@ async function registerPushNotification(publicKey) {
     });
     
     // Send the push notification subscription to the server
-    await fetch('$https://test-5fdn.onrender.com:4000/api/push/subscribe', {
+    await fetch('https://test-push-bkct.onrender.com/api/push/subscribe', {
       method: 'POST',
       body: JSON.stringify({ subscription }),
       headers: {

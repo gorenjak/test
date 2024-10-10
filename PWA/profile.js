@@ -24,7 +24,7 @@ async function fetchUserProfile() {
     try {
         const token = localStorage.getItem('accessToken');
         const userId = localStorage.getItem('userId');
-        const response = await fetch(`http://localhost:3000/api/user/${userId}`, {
+        const response = await fetch(`https://test-5fdn.onrender.com/api/user/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -75,7 +75,7 @@ async function updateProfile(event) {
     try {
         const token = localStorage.getItem('accessToken');
         const userId = localStorage.getItem('userId');
-        const response = await fetch(`http://localhost:3000/api/user/${userId}`, {
+        const response = await fetch(`https://test-5fdn.onrender.com/api/user/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ async function deleteAccount() {
     try {
         const token = localStorage.getItem('accessToken');
         const userId = localStorage.getItem('userId');
-        const response = await fetch(`http://localhost:3000/api/user/${userId}`, {
+        const response = await fetch(`https://test-5fdn.onrender.com/api/user/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -154,7 +154,7 @@ async function submitChangePassword(event) {
     try {
         const token = localStorage.getItem('accessToken');
         const userId = localStorage.getItem('userId');
-        const response = await fetch(`http://localhost:3000/api/change-password`, {
+        const response = await fetch(`https://test-5fdn.onrender.com/api/change-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

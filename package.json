@@ -21,8 +21,9 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-      "start": "concurrently \"node REST/server.js\"",
-      "build": "webpack --mode production",
-      "check": "echo $PATH && ls -l ./node_modules/.bin"
+    "start": "node REST/server.js",
+    "start-push": "node REST/push-notification.js",
+    "build": "webpack --mode production",
+    "check": "echo $PATH && ls -l ./node_modules/.bin"
   }
 }
