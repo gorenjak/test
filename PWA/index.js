@@ -1,5 +1,5 @@
 // Import socket.io and initialize connection
-const socket = io('http://localhost:9000');
+const socket = io('https://test-5fdn.onrender.com:9000');
 
 // Connect to the socket.io server
 socket.on('connect', () => {
