@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 require('dotenv').config();
-const mongoose = require('mongoose');const { body, validationResult } = require('express-validator');
+const mongoose = require('mongoose');
+const { body, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const http = require('http');
@@ -513,11 +516,7 @@ app.post('/api/shopping-lists/:id/share', authenticateToken, async (req, res) =>
   }
 });
 
-const SOCKET_PORT = process.env.SOCKET_PORT || 9000;
-server.listen(SOCKET_PORT, () => {
-  console.log(`Socket.io strežnik teče na portu ${SOCKET_PORT}`);
-});
-
+// Start server
 server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
