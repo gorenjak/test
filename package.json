@@ -23,6 +23,7 @@
   "scripts": {
     "start": "node REST/server.js",
     "start-push": "node REST/push-notification.js",
+    "start-shopping": "node REST/shopping-list.js   ",
     "build": "webpack --mode production",
     "check": "echo $PATH && ls -l ./node_modules/.bin"
   }
