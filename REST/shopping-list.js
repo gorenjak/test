@@ -12,14 +12,7 @@ const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: "https://test-shopping.onrender.com",
-    methods: ["GET", "POST", "DELETE"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-  }
-});
+const io = socketIo(server);
 
 const PORT = process.env.SHOPPING_LIST_PORT || 5000;
 
