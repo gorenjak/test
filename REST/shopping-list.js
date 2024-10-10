@@ -513,8 +513,4 @@ app.post('/api/shopping-lists/:id/share', authenticateToken, async (req, res) =>
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Strežnik deluje na http://localhost:${PORT}/`);
-});
-
 server.listen(9000);

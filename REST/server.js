@@ -274,7 +274,3 @@ app.get('/api/users/email/:email', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving user', error });
   }
 });
-
-app.listen(PORT, () => {
-  console.log(`Strežnik deluje na http://localhost:${PORT}/`);
-});

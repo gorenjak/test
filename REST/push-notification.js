@@ -58,7 +58,3 @@ app.get('/api/publicKey', (req, res) => {
     
     res.json({ success: true, message: 'Push subscription successful' });
   });
-
-app.listen(PORT, () => {
-    console.log(`Strežnik deluje na http://localhost:${PORT}/`);
-  });
