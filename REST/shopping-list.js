@@ -20,7 +20,7 @@ const io = socketIo(server, {
   }
 });
 
-const PORT = process.env.SHOPPING_LIST_PORT || 10001;
+const PORT = process.env.SHOPPING_LIST_PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());

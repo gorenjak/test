@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.SERVER_PORT || 10000;
+const PORT = process.env.SERVER_PORT || 3000; // Change this if you're using a different port
 
 // Nastavitev statičnih datotek
 app.use(express.static(path.join(__dirname, '../PWA'))); // pot do mape PWA
