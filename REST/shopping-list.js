@@ -513,4 +513,11 @@ app.post('/api/shopping-lists/:id/share', authenticateToken, async (req, res) =>
   }
 });
 
-server.listen(9000);
+const SOCKET_PORT = process.env.SOCKET_PORT || 9000;
+server.listen(SOCKET_PORT, () => {
+  console.log(`Socket.io strežnik teče na portu ${SOCKET_PORT}`);
+});
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

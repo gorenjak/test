@@ -274,3 +274,7 @@ app.get('/api/users/email/:email', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving user', error });
   }
 });
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
