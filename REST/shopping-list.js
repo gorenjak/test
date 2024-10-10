@@ -515,9 +515,9 @@ app.post('/api/shopping-lists/:id/share', authenticateToken, async (req, res) =>
 });
 
 socketServer.listen(SOCKET_PORT, () => {
-  console.log(`Socket.io server is running on port ${SOCKET_PORT}`);
+    console.log(`Socket.io server is running on port ${SOCKET_PORT}`);
 });
 
-const server = app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
