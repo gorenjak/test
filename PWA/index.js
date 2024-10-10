@@ -124,7 +124,7 @@ async function shareList(event) {
 
   try {
     // Get the user ID based on email
-    const userResponse = await fetch(`http://localhost:3000/api/users/email/${email}`, {
+    const userResponse = await fetch(`https://test-5fdn.onrender.com/api/users/email/${email}`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
